@@ -5,6 +5,7 @@
 
 #include<stdlib.h>
 #include<stdio.h>
+#include "map.h"
 
 #define LU  "(0j(B"
 #define LD  "(0k(B"
@@ -24,6 +25,10 @@ void output(char out[])
 /* Test, print out some colours */
 int main(int argc, char * argv[]) 
 {
+
+	printf("Testing Map ...\r\n");
+	map * m = map_create();
+	map_destroy(m);
 
 	output(B);
 	output(B);
