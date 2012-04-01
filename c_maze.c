@@ -11,16 +11,37 @@
 /* Test, print out some colours */
 int main(int argc, char * argv[]) 
 {
+	// Check the correct number of arguments are passed
+	if (argc < 2)
+	{
+		printf("Usage: c_maze FILEIN\r\n");
+		return 0;
+	}
+
   // variable for the random number
 	int r;
 	// variable for the loop
 	int i;
+	// File ptr
+	FILE * fptr;
+	// Read byte
+	int read_in;
 
+	// Create the map
 	map * m = map_create();
 
-	for(i = 0; i< 1000; i++)
+	// Open the file
+	if(!(fptr = fopen(argv[1], "rb")))
 	{
-		r = rand() % 4;
+		printf("[Error] File not found \r\n");
+		return -1;
+
+	}
+
+	while ((read_in = fgetc(fptr)) != EOF)
+	{
+		r = read_in/(0xff/4);
+
 		switch(r)
 		{
 			case 0:
@@ -37,6 +58,7 @@ int main(int argc, char * argv[])
 				break;
 		}
 	}
+	printf("\r\n");
 
 	renderer_render(m);
 

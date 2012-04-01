@@ -1,1 +1,3 @@
 Reads in a file and creates a maze based on the bit values!
+
+Outputs in vt100 terminal output, so I can't copy and paste the output.
