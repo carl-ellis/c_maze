@@ -18,7 +18,7 @@ int main(int argc, char * argv[])
 
 	map * m = map_create();
 
-	for(i = 0; i< 100; i++)
+	for(i = 0; i< 1000; i++)
 	{
 		r = rand() % 4;
 		switch(r)

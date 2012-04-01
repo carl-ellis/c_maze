@@ -38,8 +38,8 @@ void map_north(map *map)
 // Goes East
 void map_east(map *map)
 {
-	// first check sure not at the top of the map
-	if (map->ptr % MAP_LENGTH < MAP_LENGTH){
+	// first check sure not at the right of the map
+	if (map->ptr % MAP_LENGTH < (MAP_LENGTH-1)){
 
 		// Scribe map on departure
 		map_scribe(map, E);

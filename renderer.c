@@ -65,7 +65,7 @@ void renderer_render(map* map)
 				renderer_output_c(NESW);
 				break;
 			default:
-				renderer_output_c(B);
+				printf("%i", (int)map->data[i]);
 				break;
 		}
 
