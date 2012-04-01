@@ -1,15 +1,12 @@
 #include "map.h"
-#include<stdlib.h>
-#include<string.h>
 
-// Constructs a map
 map * map_create()
 {
 	// Get some heap for the map
 	map* m = (map*)malloc(sizeof(map));
 
-	// Makesure sane initial values
-	m->ptr = 0;
+	// Make sure sane initial values
+	m->ptr = (MAP_LENGTH/2)*MAP_LENGTH + (MAP_LENGTH/2); //centre
 	memset(m->data, 0, sizeof(m->data));
 	return m;
 }
@@ -38,8 +35,25 @@ void map_north(map *map)
 	}
 }
 
+// Goes East
+void map_east(map *map)
+{
+	// first check sure not at the top of the map
+	if (map->ptr % MAP_LENGTH < MAP_LENGTH){
+
+		// Scribe map on departure
+		map_scribe(map, E);
+
+		// Change position up a row
+		map->ptr += 1;
+
+		// Scribe map on arrival
+		map_scribe(map, W);
+	}
+}
+
 // Goes South
-void map_north(map *map)
+void map_south(map *map)
 {
 	// first check sure not at the top of the map
 	if (map->ptr < MAP_SIZE-MAP_LENGTH){
@@ -52,6 +66,23 @@ void map_north(map *map)
 
 		// Scribe map on arrival
 		map_scribe(map, N);
+	}
+}
+
+// Goes West
+void map_west(map *map)
+{
+	// first check sure not at the top of the map
+	if (map->ptr % MAP_LENGTH > 0){
+
+		// Scribe map on departure
+		map_scribe(map, W);
+
+		// Change position up a row
+		map->ptr -= 1;
+
+		// Scribe map on arrival
+		map_scribe(map, E);
 	}
 }
 

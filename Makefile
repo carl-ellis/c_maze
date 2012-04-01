@@ -3,13 +3,16 @@ CFLAGS 	= -g
 
 all: c_maze
 
-c_maze: c_maze.o map.o
+c_maze: c_maze.o map.o renderer.o
 	$(CC) $(LDFLAGS) -o $@ $^ 
 
 c_maze.o: c_maze.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 map.o: map.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+renderer.o: renderer.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean: FRC

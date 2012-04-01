@@ -1,6 +1,9 @@
 #ifndef C_MAZE_MAP
 #define C_MAZE_MAP
 
+#include<stdlib.h>
+#include<string.h>
+
 #define MAP_SIZE 1024 // 32x32 map
 #define MAP_LENGTH 32 
 

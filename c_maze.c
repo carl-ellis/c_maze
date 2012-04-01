@@ -6,42 +6,42 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include "map.h"
-
-#define LU  "(0j(B"
-#define LD  "(0k(B"
-#define RD  "(0l(B"
-#define RU  "(0m(B"
-#define H   "(0q(B"
-#define V   "(0x(B"
-#define NL 	"\r\n"
-#define B 	" "
-
-/** Output a control character */
-void output(char out[])
-{
-	printf("%s", out);
-}
+#include "renderer.h"
 
 /* Test, print out some colours */
 int main(int argc, char * argv[]) 
 {
+  // variable for the random number
+	int r;
+	// variable for the loop
+	int i;
 
-	printf("Testing Map ...\r\n");
 	map * m = map_create();
+
+	for(i = 0; i< 100; i++)
+	{
+		r = rand() % 4;
+		switch(r)
+		{
+			case 0:
+				map_north(m);
+				break;
+			case 1:
+				map_east(m);
+				break;
+			case 2:
+				map_south(m);
+				break;
+			case 3:
+				map_west(m);
+				break;
+		}
+	}
+
+	renderer_render(m);
+
 	map_destroy(m);
 
-	output(B);
-	output(B);
-	output(RD);
-	output(H);
-	output(LD);
-	output(NL);
-
-	output(H);
-	output(H);
-	output(LU);
-	output(B);
-	output(B);
 
 	return 0;
 }
