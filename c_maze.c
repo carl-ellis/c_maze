@@ -60,6 +60,9 @@ int main(int argc, char * argv[])
 	}
 	printf("\r\n");
 
+	// Close file
+	fclose(fptr);
+
 	renderer_render(m);
 
 	map_destroy(m);
